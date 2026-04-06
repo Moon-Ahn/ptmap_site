@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ExternalLink, Rocket, Map, Instagram, Share2, MousePointer2, LayoutGrid, HeartPulse } from 'lucide-react';
 
 const App = () => {
   const COMMUNITY_URL = "https://www.instagram.com/the.pt.map?igsh=MWIwOTV2OTY1Y2loaw==";
+
+  // 카카오 광고 스크립트 로드 및 광고 실행
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // 컴포넌트 언마운트 시 스크립트 제거 (선택 사항)
+      const existingScript = document.querySelector('script[src="//t1.daumcdn.net/kas/static/ba.min.js"]');
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   // 허브에 노출될 콘텐츠 리스트
   const contents = [
@@ -13,7 +30,7 @@ const App = () => {
       url: "https://pt-balance-game.vercel.app/",
       emoji: "⚖️",
       tag: "NEW",
-      tagStyle: "bg-indigo-100 text-indigo-600", // 기존 인디고 계열
+      tagStyle: "bg-indigo-100 text-indigo-600",
       iconBg: "bg-white",
     },
     {
@@ -23,7 +40,7 @@ const App = () => {
       url: "https://pt-ssacksu.vercel.app/",
       emoji: "🌱",
       tag: "HOT",
-      tagStyle: "bg-emerald-100 text-emerald-600", // 기존 에메랄드 계열
+      tagStyle: "bg-emerald-100 text-emerald-600",
       iconBg: "bg-white",
     }
   ];
@@ -65,7 +82,7 @@ const App = () => {
         </div>
       </div>
 
-      {/* 콘텐츠 카드 그리드 (한 줄에 3개 레이아웃) */}
+      {/* 콘텐츠 카드 그리드 */}
       <div className="max-w-7xl mx-auto px-6 -mt-16 relative z-20">
         <div className="flex flex-wrap justify-center gap-8">
           {contents.map((item) => (
@@ -77,11 +94,9 @@ const App = () => {
               className="group bg-white rounded-[2.5rem] p-7 custom-shadow border border-white hover:translate-y-[-5px] active:scale-95 transition-all flex flex-col w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm"
             >
               <div className="flex justify-between items-start mb-5">
-                {/* 아이콘 배경 흰색 유지 */}
                 <div className="w-16 h-16 rounded-3xl bg-white border-2 border-slate-100 flex items-center justify-center text-4xl shadow-lg transform group-hover:rotate-6 transition-transform">
                   {item.emoji}
                 </div>
-                {/* 태그 컬러 기존 색상으로 복구 */}
                 <span className={`px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-sm ${item.tagStyle}`}>
                   {item.tag}
                 </span>
@@ -97,7 +112,6 @@ const App = () => {
               </p>
 
               <div className="mt-auto flex items-center justify-between">
-                {/* 시작하기 문구 및 화살표 원래 인디고 색상으로 복구 */}
                 <span className="font-black flex items-center gap-2 text-sm text-indigo-600">
                   시작하기 <MousePointer2 className="w-5 h-5 animate-bounce" />
                 </span>
@@ -109,8 +123,16 @@ const App = () => {
           ))}
         </div>
 
+        {/* 광고 섹션: 콘텐츠 카드와 하단 배너 사이에 배치 */}
+        <div className="mt-12 flex justify-center overflow-hidden">
+          <ins className="kakao_ad_area" style={{ display: 'none' }}
+            data-ad-unit="DAN-yFTIi0bFetiem8FB"
+            data-ad-width="300"
+            data-ad-height="250"></ins>
+        </div>
+
         {/* 하단 인스타그램 커뮤니티 섹션 */}
-        <div className="mt-16 max-w-4xl mx-auto bg-slate-900 rounded-[3rem] p-10 text-center shadow-2xl border border-slate-800">
+        <div className="mt-12 max-w-4xl mx-auto bg-slate-900 rounded-[3rem] p-10 text-center shadow-2xl border border-slate-800">
           <div className="flex justify-center mb-6">
             <div className="p-4 bg-indigo-500/10 rounded-full">
               <HeartPulse className="w-8 h-8 text-indigo-400 animate-pulse" />
