@@ -12,7 +12,7 @@ const App = () => {
       desc: "나는 어떤 유형의 치료사일까? 10가지 밸런스 대결로 알아보는 나의 임상 MBTI!",
       url: "https://pt-balance-game.vercel.app/",
       emoji: "⚖️",
-      tag: "인기",
+      tag: "NEW",
       tagStyle: "bg-indigo-100 text-indigo-600", // 기존 인디고 계열
       iconBg: "bg-white",
     },
