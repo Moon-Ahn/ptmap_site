@@ -13,18 +13,18 @@ const App = () => {
       url: "https://pt-balance-game.vercel.app/",
       emoji: "⚖️",
       tag: "인기",
-      color: "from-indigo-500 to-indigo-600",
-      shadow: "shadow-indigo-100"
+      tagStyle: "bg-indigo-100 text-indigo-600", // 기존 인디고 계열
+      iconBg: "bg-white",
     },
     {
       id: 2,
-      title: "물치 진로 성향 테스트",
-      desc: "나는 어떤 물리치료사가 될까? 예비/신입 물치사를 위한 진로 성향 진단!",
+      title: "물치 새싹수 테스트",
+      desc: "나의 물리치료 잠재력은 몇 점? 예비/신입 물치사를 위한 성향 및 실력 진단!",
       url: "https://pt-ssacksu.vercel.app/",
       emoji: "🌱",
       tag: "HOT",
-      color: "from-emerald-500 to-emerald-600",
-      shadow: "shadow-emerald-100"
+      tagStyle: "bg-emerald-100 text-emerald-600", // 기존 에메랄드 계열
+      iconBg: "bg-white",
     }
   ];
 
@@ -53,8 +53,8 @@ const App = () => {
         </div>
 
         <div className="relative z-10">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-lg rounded-[2rem] mb-8 border border-white/20 shadow-2xl rotate-3">
-            <Map className="w-10 h-10 text-white" />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-[2rem] mb-8 shadow-2xl rotate-3 border-4 border-indigo-500/30">
+            <Map className="w-10 h-10 text-indigo-600" />
           </div>
           <h1 className="text-5xl font-black text-white mb-4 tracking-tight">
             PT MAP <span className="text-sky-300">HUB</span>
@@ -77,10 +77,12 @@ const App = () => {
               className="group bg-white rounded-[2.5rem] p-7 custom-shadow border border-white hover:translate-y-[-5px] active:scale-95 transition-all flex flex-col w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm"
             >
               <div className="flex justify-between items-start mb-5">
-                <div className={`w-16 h-16 rounded-3xl bg-gradient-to-br ${item.color} flex items-center justify-center text-4xl shadow-xl transform group-hover:rotate-6 transition-transform`}>
+                {/* 아이콘 배경 흰색 유지 */}
+                <div className="w-16 h-16 rounded-3xl bg-white border-2 border-slate-100 flex items-center justify-center text-4xl shadow-lg transform group-hover:rotate-6 transition-transform">
                   {item.emoji}
                 </div>
-                <span className={`px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest ${item.id === 1 ? 'bg-indigo-100 text-indigo-600' : 'bg-emerald-100 text-emerald-600'}`}>
+                {/* 태그 컬러 기존 색상으로 복구 */}
+                <span className={`px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-sm ${item.tagStyle}`}>
                   {item.tag}
                 </span>
               </div>
@@ -90,12 +92,13 @@ const App = () => {
                 <ExternalLink className="w-5 h-5 text-slate-300 group-hover:text-indigo-500 transition-colors" />
               </h3>
 
-              <p className="text-slate-500 text-lg font-medium leading-snug mb-8 opacity-80">
+              <p className="text-slate-500 text-lg font-medium leading-snug mb-8 opacity-80 h-12">
                 {item.desc}
               </p>
 
               <div className="mt-auto flex items-center justify-between">
-                <span className="text-indigo-600 font-black flex items-center gap-2 text-sm">
+                {/* 시작하기 문구 및 화살표 원래 인디고 색상으로 복구 */}
+                <span className="font-black flex items-center gap-2 text-sm text-indigo-600">
                   시작하기 <MousePointer2 className="w-5 h-5 animate-bounce" />
                 </span>
                 <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center group-hover:bg-indigo-50 transition-colors">
@@ -106,7 +109,7 @@ const App = () => {
           ))}
         </div>
 
-        {/* 하단 인스타그램 커뮤니티 섹션 (가로 너비 조정) */}
+        {/* 하단 인스타그램 커뮤니티 섹션 */}
         <div className="mt-16 max-w-4xl mx-auto bg-slate-900 rounded-[3rem] p-10 text-center shadow-2xl border border-slate-800">
           <div className="flex justify-center mb-6">
             <div className="p-4 bg-indigo-500/10 rounded-full">
