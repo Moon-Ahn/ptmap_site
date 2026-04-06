@@ -18,8 +18,8 @@ const App = () => {
     },
     {
       id: 2,
-      title: "물치 새싹수 테스트",
-      desc: "나의 물리치료 잠재력은 몇 점? 예비/신입 물치사를 위한 성향 및 실력 진단!",
+      title: "물치 진로 성향 테스트",
+      desc: "나는 어떤 물리치료사가 될까? 예비/신입 물치사를 위한 성향 진단!",
       url: "https://pt-ssacksu.vercel.app/",
       emoji: "🌱",
       tag: "HOT",
