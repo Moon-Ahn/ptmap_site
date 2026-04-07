@@ -9,12 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.2",
+    "@vercel/analytics": "latest",
+    "clsx": "latest",
+    "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "latest",
-    "@vercel/analytics": "latest",
-    "clsx": "latest",
     "tailwind-merge": "latest"
   },
   "devDependencies": {
