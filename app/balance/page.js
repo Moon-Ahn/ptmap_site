@@ -43,11 +43,12 @@ export default function BalancePage() {
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4 font-jua">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 min-h-[600px] flex flex-col relative">
+
         {step === 'start' && (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-sky-50 to-white">
             <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center mb-8 shadow-xl"><Activity className="w-12 h-12 text-white" /></div>
-            <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight text-center">물리치료사<br/>성향 밸런스 게임</h1>
-            <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 transition-all mb-8">게임 시작하기</button>
+            <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight">물리치료사<br/>성향 밸런스 게임</h1>
+            <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 mb-8">게임 시작하기</button>
             <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
           </div>
         )}
@@ -68,12 +69,17 @@ export default function BalancePage() {
 
         {step === 'result' && (
           <div className="flex-1 flex flex-col p-6 overflow-y-auto bg-white">
-            <div className="text-center mt-4 mb-6"><h2 className="text-4xl font-black text-slate-900 break-keep text-center">{resultData[getResult()].title}</h2></div>
+            <div className="text-center mt-4 mb-6"><h2 className="text-4xl font-black text-slate-900 break-keep">{resultData[getResult()].title}</h2></div>
             <div className={`rounded-[40px] ${resultData[getResult()].color} p-8 mb-8 flex flex-col items-center justify-center shadow-xl shadow-slate-200/50`}>
               <div className="mb-6 bg-white p-5 rounded-3xl shadow-md">{resultData[getResult()].icon}</div>
               <p className="text-slate-700 leading-relaxed text-center font-bold text-lg px-2">{resultData[getResult()].desc}</p>
             </div>
-            <div className="flex justify-center mb-10"><AdFit unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" /></div>
+
+            {/* ⭐ 결과창 전용 Key 추가 (강제 새로고침) */}
+            <div className="flex justify-center mb-10">
+              <AdFit key="balance-result-ad" unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" />
+            </div>
+
             <div className="space-y-4 mb-10">
               <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }} className="w-full py-4 bg-indigo-900 text-white rounded-2xl font-bold flex items-center justify-center gap-3 text-lg"><Share2 className="w-6 h-6" /> 링크 복사하기</button>
               <button onClick={restart} className="w-full py-4 bg-white border-2 border-slate-200 text-slate-500 rounded-2xl font-bold flex items-center justify-center gap-3"><RefreshCcw className="w-5 h-5" /> 다시 테스트하기</button>
