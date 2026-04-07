@@ -35,6 +35,7 @@ export default function AdFit({ unit, width, height }) {
         data-ad-unit={unit}
         data-ad-width={width}
         data-ad-height={height}
+        suppressHydrationWarning={true} // <-- 이 줄을 추가하세요!
       ></ins>
     </div>
   );
