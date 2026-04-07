@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 30, 41, 59;
+  --background-start-rgb: 241, 245, 249;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@layer base {
+  * {
+    /* 폰트를 주아체로 강제 설정 (layout.js에서 불러온 폰트) */
+    font-family: 'Jua', sans-serif !important;
+    /* 단어가 중간에 잘리지 않게 설정 (한글 가독성 향상) */
+    word-break: keep-all;
+    /* 텍스트 드래그 방지 (테스트의 몰입감 향상) */
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800;
+    /* 모바일에서 버튼 클릭 시 생기는 파란색 하이라이트 제거 */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* 스크롤바 숨기기 (모바일 앱 같은 느낌을 줄 때 유용) */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  /* 자주 사용하는 버튼 스타일이 있다면 여기에 정의할 수 있습니다. */
+  .btn-primary {
+    @apply py-4 bg-indigo-700 text-white rounded-2xl font-black text-xl
+           transition-all active:scale-95 shadow-lg shadow-indigo-100;
+  }
+}
+
+/* 애니메이션 효과 (필요 시) */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
