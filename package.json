@@ -1,6 +1,7 @@
 {
   "name": "ptmap-site",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,12 +12,14 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "^0.344.0",
-    "@vercel/analytics": "latest"
+    "lucide-react": "latest",
+    "@vercel/analytics": "latest",
+    "clsx": "latest",
+    "tailwind-merge": "latest"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1"
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest"
   }
 }
