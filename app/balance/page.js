@@ -43,68 +43,44 @@ export default function BalancePage() {
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4 font-jua">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 min-h-[600px] flex flex-col relative">
-
         {step === 'start' && (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-sky-50 to-white">
-            <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] rotate-6 flex items-center justify-center mb-8 shadow-xl shadow-indigo-200"><Activity className="w-12 h-12 text-white -rotate-6" /></div>
-            <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight">물리치료사<br/>성향 밸런스 게임</h1>
-            <p className="text-slate-500 mb-8 font-medium">나의 임상 스타일은?<br/><span className="text-indigo-700 text-sm font-bold tracking-tight uppercase">PT MAP BALANCE GAME</span></p>
-            <button
-              onClick={() => setStep('quiz')}
-              className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 transition-all mb-8 text-center cursor-pointer"
-            >
-              게임 시작하기
-            </button>
-            {/* 시작 화면 광고 (320x50) */}
+            <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center mb-8 shadow-xl"><Activity className="w-12 h-12 text-white" /></div>
+            <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight text-center">물리치료사<br/>성향 밸런스 게임</h1>
+            <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 transition-all mb-8">게임 시작하기</button>
             <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
-            <p className="mt-6 text-sm text-slate-400 font-bold uppercase tracking-widest">10 Questions | @the.pt.map</p>
           </div>
         )}
 
         {step === 'quiz' && (
           <div className="flex-1 flex flex-col p-4 bg-slate-50 relative">
             <div className="mb-4 text-center px-2">
-              <div className="flex justify-between items-end mb-2"><span className="text-indigo-600 font-black text-xl italic tracking-tighter uppercase">Question {currentIdx + 1}</span><span className="text-slate-400 text-sm font-bold">{currentIdx + 1} / {questions.length}</span></div>
+              <div className="flex justify-between items-end mb-2"><span className="text-indigo-600 font-black text-xl italic uppercase tracking-tighter">Question {currentIdx + 1}</span></div>
               <div className="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden"><div className="h-full bg-indigo-600 transition-all duration-300" style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }} /></div>
             </div>
             <div className="flex-1 flex flex-col relative gap-4 mb-4">
-              <button onClick={() => handleAnswer(questions[currentIdx].optionA.value)} className="flex-1 bg-sky-100 hover:bg-sky-200 rounded-[2rem] p-6 flex items-center justify-center border-2 border-transparent hover:border-sky-300 transition-all active:scale-[0.98] shadow-sm"><span className="text-2xl font-black text-sky-900 text-center whitespace-pre-line leading-tight">{questions[currentIdx].optionA.text}</span></button>
+              <button onClick={() => handleAnswer(questions[currentIdx].optionA.value)} className="flex-1 bg-sky-100 rounded-[2rem] p-6 flex items-center justify-center shadow-sm text-2xl font-black text-sky-900 text-center whitespace-pre-line leading-tight">{questions[currentIdx].optionA.text}</button>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-slate-50 font-black italic text-2xl text-slate-800">VS</div>
-              <button onClick={() => handleAnswer(questions[currentIdx].optionB.value)} className="flex-1 bg-indigo-600 hover:bg-indigo-700 rounded-[2rem] p-6 flex items-center justify-center border-2 border-transparent hover:border-indigo-500 transition-all active:scale-[0.98] shadow-sm"><span className="text-2xl font-black text-white text-center whitespace-pre-line leading-tight">{questions[currentIdx].optionB.text}</span></button>
+              <button onClick={() => handleAnswer(questions[currentIdx].optionB.value)} className="flex-1 bg-indigo-600 rounded-[2rem] p-6 flex items-center justify-center shadow-sm text-2xl font-black text-white text-center whitespace-pre-line leading-tight">{questions[currentIdx].optionB.text}</button>
             </div>
-            {/* 퀴즈 중에는 버튼 먹통 방지를 위해 광고를 노출하지 않습니다 */}
           </div>
         )}
 
         {step === 'result' && (
           <div className="flex-1 flex flex-col p-6 overflow-y-auto bg-white">
-            <div className="text-center mt-4 mb-6"><div className="inline-block px-4 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-black mb-4 uppercase tracking-widest">PT MAP 진단결과 🔍</div><h2 className="text-4xl font-black text-slate-900 break-keep">{resultData[getResult()].title}</h2></div>
-            <div className={`rounded-[40px] ${resultData[getResult()].color} p-8 mb-8 flex flex-col items-center justify-center border border-white shadow-xl shadow-slate-200/50`}>
-              <div className="mb-6 bg-white p-5 rounded-3xl shadow-md transform -rotate-3">{resultData[getResult()].icon}</div>
-              <span className="inline-block px-6 py-2 bg-indigo-800 rounded-full text-xs font-black text-white shadow-md mb-6 uppercase tracking-widest">{resultData[getResult()].type}</span>
-              <div className="flex flex-wrap justify-center gap-2 mb-8 px-2">{resultData[getResult()].tags.map((tag, i) => (<span key={i} className="text-indigo-700 font-bold text-sm bg-white/70 px-3 py-1 rounded-xl border border-indigo-100 shadow-sm">{tag}</span>))}</div>
+            <div className="text-center mt-4 mb-6"><h2 className="text-4xl font-black text-slate-900 break-keep text-center">{resultData[getResult()].title}</h2></div>
+            <div className={`rounded-[40px] ${resultData[getResult()].color} p-8 mb-8 flex flex-col items-center justify-center shadow-xl shadow-slate-200/50`}>
+              <div className="mb-6 bg-white p-5 rounded-3xl shadow-md">{resultData[getResult()].icon}</div>
               <p className="text-slate-700 leading-relaxed text-center font-bold text-lg px-2">{resultData[getResult()].desc}</p>
             </div>
-
-            {/* 결과 화면 광고 (수익률이 좋은 300x250) */}
-            <div className="flex justify-center mb-10">
-              <AdFit unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" />
-            </div>
-
-            <div className="space-y-4 mb-10 mt-10">
-              <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }} className="w-full py-4 bg-indigo-900 text-white rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg active:scale-95 text-lg"><Share2 className="w-6 h-6" /> 링크 복사하기</button>
-              <button onClick={restart} className="w-full py-4 bg-white border-2 border-slate-200 text-slate-500 rounded-2xl font-bold flex items-center justify-center gap-3 active:scale-95"><RefreshCcw className="w-5 h-5" /> 다시 테스트하기</button>
-            </div>
-            <div className="bg-slate-900 rounded-[36px] p-10 text-center shadow-2xl border border-slate-800">
-              <p className="text-indigo-400 text-lg font-black mb-4 tracking-widest uppercase italic">💡 NEXT STEP</p>
-              <div className="text-slate-200 text-base mb-8 leading-relaxed font-medium">놓치면 손해인 물리치료사들의 로드맵!<br /><span className="text-white text-3xl font-black block mt-3 mb-1 tracking-tighter italic font-serif leading-none text-center">PT MAP</span></div>
-              <button onClick={() => window.open(COMMUNITY_URL, '_blank')} className="w-full py-5 bg-indigo-600 text-white rounded-[20px] font-black text-xl hover:bg-indigo-500 transition-all active:scale-95 shadow-[0_10px_30px_rgba(79,70,229,0.5)] flex items-center justify-center gap-2">커뮤니티 바로가기</button>
+            <div className="flex justify-center mb-10"><AdFit unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" /></div>
+            <div className="space-y-4 mb-10">
+              <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }} className="w-full py-4 bg-indigo-900 text-white rounded-2xl font-bold flex items-center justify-center gap-3 text-lg"><Share2 className="w-6 h-6" /> 링크 복사하기</button>
+              <button onClick={restart} className="w-full py-4 bg-white border-2 border-slate-200 text-slate-500 rounded-2xl font-bold flex items-center justify-center gap-3"><RefreshCcw className="w-5 h-5" /> 다시 테스트하기</button>
             </div>
           </div>
         )}
       </div>
-      {/* 배경 블러 효과 */}
-      <div className="fixed -z-10 top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none"><div className="absolute top-[-25%] left-[-15%] w-[600px] h-[600px] bg-indigo-200 rounded-full blur-[140px]" /><div className="absolute bottom-[-15%] right-[-15%] w-[500px] h-[500px] bg-blue-200 rounded-full blur-[120px]" /></div>
     </div>
   );
 }
