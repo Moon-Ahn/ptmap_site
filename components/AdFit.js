@@ -3,50 +3,42 @@
 import { useEffect, useState } from "react";
 
 export default function AdFit({ unit, width, height }) {
-  const [mounted, setMounted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // 1. 컴포넌트가 브라우저에 완전히 안착했는지 확인
-    setMounted(true);
+    // 1. 클라이언트 사이드인지 확인 (Hydration 오류 방지)
+    setIsClient(true);
+  }, []);
 
-    let retryInterval;
-    let count = 0;
-
-    const tryDisplay = () => {
-      if (window.adfit && typeof window.adfit.display === 'function') {
+  useEffect(() => {
+    if (isClient) {
+      // 2. 리액트가 화면을 다 그린 후, 아주 잠깐의 여유(300ms)를 두고 광고 호출
+      const timer = setTimeout(() => {
         try {
-          window.adfit.display();
-          clearInterval(retryInterval);
+          if (window.adfit && typeof window.adfit.display === 'function') {
+            window.adfit.display();
+          }
         } catch (e) {
           console.error("AdFit display error:", e);
         }
-      } else if (count > 20) {
-        clearInterval(retryInterval);
-      }
-      count++;
-    };
+      }, 300);
 
-    // 2. 마운트 직후 바로 실행하지 않고 0.5초 정도 여유를 줍니다 (버튼 기능 연결 시간 확보)
-    if (mounted) {
-      retryInterval = setInterval(tryDisplay, 500);
+      return () => clearTimeout(timer);
     }
+  }, [isClient, unit]); // unit이 바뀌거나 클라이언트 마운트 시 실행
 
-    return () => {
-      if (retryInterval) clearInterval(retryInterval);
-    };
-  }, [mounted, unit]);
-
-  // 3. 서버 사이드 렌더링 시에는 아무것도 렌더링하지 않아 충돌 방지
-  if (!mounted) return <div style={{ minHeight: height }} />;
+  // 서버 사이드 렌더링 시에는 빈 영역(placeholder)만 보여줌
+  if (!isClient) return <div style={{ minHeight: `${height}px` }} />;
 
   return (
-    <div className="flex justify-center my-4 overflow-hidden" style={{ minHeight: height }}>
+    <div className="flex justify-center my-4 overflow-hidden" style={{ minHeight: `${height}px` }}>
       <ins
         className="kakao_ad_area"
         style={{ display: "none" }}
         data-ad-unit={unit}
         data-ad-width={width}
         data-ad-height={height}
+        suppressHydrationWarning={true}
       ></ins>
     </div>
   );
