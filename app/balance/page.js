@@ -11,6 +11,7 @@ export default function BalancePage() {
 
   const COMMUNITY_URL = "https://www.instagram.com/the.pt.map";
 
+  // ... (질문 데이터 및 로직 동일) ...
   const questions = [
     { id: 1, title: "퇴근 조건", type: "PE", optionA: { text: "🏃‍♂️ 평생 점심 없이\n1시간 조기 퇴근", value: 'E' }, optionB: { text: "🍱 점심 2시간 보장받고\n1시간 야근", value: 'P' } },
     { id: 2, title: "환자 유형", type: "ST", optionA: { text: "😶 입 꾹 닫고\n한 마디도 안 하는 환자", value: 'T' }, optionB: { text: "🗣️ 1초도 안 쉬고\n자기 얘기만 하는 환자", value: 'S' } },
@@ -66,6 +67,7 @@ export default function BalancePage() {
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-slate-50 font-black italic text-2xl text-slate-800">VS</div>
               <button onClick={() => handleAnswer(questions[currentIdx].optionB.value)} className="flex-1 bg-indigo-600 hover:bg-indigo-700 rounded-[2rem] p-6 flex items-center justify-center border-2 border-transparent hover:border-indigo-500 transition-all active:scale-[0.98] shadow-sm"><span className="text-2xl font-black text-white text-center whitespace-pre-line leading-tight">{questions[currentIdx].optionB.text}</span></button>
             </div>
+            {/* ⭐ 핵심: key 속성을 제거하여 질문이 바뀌어도 광고가 새로고침되지 않게 합니다 */}
             <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
           </div>
         )}
@@ -79,7 +81,7 @@ export default function BalancePage() {
               <div className="flex flex-wrap justify-center gap-2 mb-8 px-2">{resultData[getResult()].tags.map((tag, i) => (<span key={i} className="text-indigo-700 font-bold text-sm bg-white/70 px-3 py-1 rounded-xl border border-indigo-100 shadow-sm">{tag}</span>))}</div>
               <p className="text-slate-700 leading-relaxed text-center font-bold text-lg px-2">{resultData[getResult()].desc}</p>
             </div>
-            <AdFit unit="DAN-yFTIi0bFetiem8FB" width="320" height="50" />
+            <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
             <div className="space-y-4 mb-10 mt-10">
               <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }} className="w-full py-4 bg-indigo-900 text-white rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg active:scale-95 text-lg"><Share2 className="w-6 h-6" /> 링크 복사하기</button>
               <button onClick={restart} className="w-full py-4 bg-white border-2 border-slate-200 text-slate-500 rounded-2xl font-bold flex items-center justify-center gap-3 active:scale-95"><RefreshCcw className="w-5 h-5" /> 다시 테스트하기</button>

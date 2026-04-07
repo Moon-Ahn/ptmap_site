@@ -60,11 +60,11 @@ export default function SsacksuPage() {
         {step === 'start' && (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-indigo-50 to-white">
             <div className="w-24 h-24 bg-indigo-100 rounded-3xl rotate-12 flex items-center justify-center mb-8 shadow-indigo-100 shadow-xl"><Activity className="w-12 h-12 text-indigo-700 -rotate-12" /></div>
-            <h1 className="text-3xl font-black mb-4 text-slate-900 leading-tight text-center">물리치료사<br/>진로 성향 테스트</h1>
+            <h1 className="text-3xl font-black mb-4 text-slate-900 leading-tight">물리치료사<br/>진로 성향 테스트</h1>
             <p className="text-slate-500 mb-8 text-lg font-medium italic">나의 진로 로드맵은?<br /><span className="font-bold text-indigo-800 text-sm uppercase tracking-widest leading-none">NS / OS / Routine / Research / Industry / Sports</span></p>
-            <button onClick={() => setStep('quiz')} className="w-full py-5 bg-indigo-800 text-white rounded-2xl font-bold text-xl shadow-lg active:scale-95 transition-all mb-8 text-center">테스트 시작하기</button>
+            <button onClick={() => setStep('quiz')} className="w-full py-5 bg-indigo-800 text-white rounded-2xl font-bold text-xl shadow-lg active:scale-95 transition-all mb-8">테스트 시작하기</button>
             <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
-            <p className="mt-6 text-sm text-slate-400 font-medium tracking-widest uppercase text-center">10 Questions | @the.pt.map</p>
+            <p className="mt-6 text-sm text-slate-400 font-medium tracking-widest uppercase">10 Questions | @the.pt.map</p>
           </div>
         )}
 
@@ -72,6 +72,8 @@ export default function SsacksuPage() {
           <div className="flex-1 flex flex-col p-6">
             <div className="mb-10"><div className="flex justify-between items-end mb-3"><span className="text-indigo-700 font-black text-xl italic uppercase tracking-widest">Question {currentIdx + 1}</span><span className="text-slate-400 text-sm font-bold">{currentIdx + 1} / {questions.length}</span></div><div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden"><div className="h-full bg-indigo-700 transition-all duration-500" style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }} /></div></div>
             <div className="flex-1 flex flex-col"><h2 className="text-2xl font-bold mb-10 leading-snug text-slate-900 break-keep">{questions[currentIdx].q}</h2><div className="space-y-4">{questions[currentIdx].options.map((option, i) => (<button key={i} onClick={() => handleAnswer(option)} className="w-full p-5 text-left border-2 border-slate-100 hover:border-indigo-400 hover:bg-indigo-50 bg-white rounded-2xl transition-all active:scale-[0.98] group flex items-center justify-between shadow-sm"><span className="text-lg font-semibold text-slate-700 group-hover:text-indigo-900 leading-tight">{option.text}</span><ChevronRight className="w-5 h-5 text-slate-200 group-hover:text-indigo-400 transition-colors" /></button>))}</div></div>
+
+            {/* ⭐ 핵심: key를 넣지 않아 질문이 넘어가도 광고가 새로고침되지 않고 유지됩니다. */}
             <div className="mt-auto py-4">
               <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
             </div>
@@ -87,13 +89,19 @@ export default function SsacksuPage() {
               <div className="flex flex-wrap justify-center gap-2 mb-6 px-2">{resultData[getResult()].tags.map((tag, i) => (<span key={i} className="text-indigo-700 font-bold text-sm bg-white/70 px-3 py-1 rounded-xl border border-indigo-100 shadow-sm">{tag}</span>))}</div>
               <p className="text-slate-700 leading-relaxed text-center font-bold text-lg px-2">{resultData[getResult()].desc}</p>
             </div>
-            <AdFit unit="DAN-yFTIi0bFetiem8FB" width="320" height="50" />
-            <div className="space-y-4 mb-10 mt-10">
+
+            {/* ⭐ 결과창 수익 극대화를 위해 정사각형 광고(300x250) 적용 */}
+            <div className="flex justify-center mb-10 overflow-hidden">
+              <AdFit unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" />
+            </div>
+
+            <div className="space-y-4 mb-10">
               <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }} className="w-full py-4 bg-indigo-900 text-white rounded-2xl font-bold flex items-center justify-center gap-3 shadow-lg active:scale-95 text-lg"><Share2 className="w-6 h-6" /> 링크 복사하기</button>
               <button onClick={restart} className="w-full py-4 bg-white border-2 border-slate-200 text-slate-500 rounded-2xl font-bold flex items-center justify-center gap-3 active:scale-95"><RefreshCcw className="w-5 h-5" /> 다시 테스트하기</button>
             </div>
+
             <div className="bg-slate-900 rounded-[36px] p-10 text-center shadow-2xl border border-slate-800">
-              <p className="text-indigo-400 text-lg font-black mb-4 tracking-widest uppercase italic uppercase tracking-widest">💡 NEXT STEP</p>
+              <p className="text-indigo-400 text-lg font-black mb-4 tracking-widest uppercase italic">💡 NEXT STEP</p>
               <div className="text-slate-200 text-base mb-8 leading-relaxed font-medium">놓치면 손해인 물리치료사들의 로드맵!<br /><span className="text-white text-3xl font-black block mt-3 mb-1 tracking-tighter italic font-serif leading-none text-center">PT MAP</span></div>
               <button onClick={() => window.open(COMMUNITY_URL, '_blank')} className="w-full py-5 bg-indigo-600 text-white rounded-[20px] font-black text-xl hover:bg-indigo-500 shadow-[0_10px_30px_rgba(79,70,229,0.5)] flex items-center justify-center gap-2">커뮤니티 바로가기</button>
             </div>
