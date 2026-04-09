@@ -35,7 +35,7 @@ export default function HubPage() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-[2rem] mb-8 shadow-2xl rotate-3">
             <Map className="w-10 h-10 text-indigo-600" />
           </div>
-          <h1 className="text-5xl font-black text-white mb-4 italic">PT MAP <span className="text-sky-300">HUB</span></h1>
+          <h1 className="text-5xl font-black text-white mb-4 italic">PT MAP</h1>
           <p className="text-indigo-100 text-xl max-w-sm mx-auto opacity-90 leading-relaxed">물리치료사들의 지도, 피티맵</p>
         </div>
       </div>
