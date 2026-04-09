@@ -87,7 +87,12 @@ export default function BalancePage() {
               <p className="text-slate-700 leading-relaxed text-center font-bold text-lg px-2">{resultData[getResult()].desc}</p>
             </div>
 
-            <div className="flex justify-center mb-10"><AdFit unit="DAN-qhPnziozp8CBV7X7" width="300" height="250" /></div>
+           {/* 결과창 광고도 강제 중앙 정렬을 적용하여 여백에 잘리지 않게 방어합니다 */}
+            <div className="relative w-full h-[250px] mb-10">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit unit="DAN-qhPnziozp8CBV7X7" width="300" height="250" />
+              </div>
+            </div>
 
             <div className="space-y-4 mb-10">
               <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }} className="w-full py-4 bg-indigo-900 text-white rounded-2xl font-bold flex items-center justify-center gap-3 text-lg"><Share2 className="w-6 h-6" /> 링크 복사하기</button>

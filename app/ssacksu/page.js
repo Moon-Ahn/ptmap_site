@@ -95,9 +95,11 @@ export default function SsacksuPage() {
               <p className="text-slate-700 leading-relaxed text-center font-bold text-lg px-2">{resultData[getResult()].desc}</p>
             </div>
 
-            {/* 결과창 광고 (Iframe 대응 및 강제 로드용 key 추가) */}
-            <div className="flex justify-center mb-10">
-              <AdFit key="ssacksu-result-ad" unit="DAN-qhPnziozp8CBV7X7" width="300" height="250" />
+            {/* 결과창 광고도 강제 중앙 정렬을 적용하여 여백에 잘리지 않게 방어합니다 */}
+            <div className="relative w-full h-[250px] mb-10">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit unit="DAN-qhPnziozp8CBV7X7" width="300" height="250" />
+              </div>
             </div>
 
             <div className="space-y-4 mb-10">
