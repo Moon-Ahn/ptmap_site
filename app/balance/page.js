@@ -48,9 +48,9 @@ export default function BalancePage() {
             <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center mb-8 shadow-xl"><Activity className="w-12 h-12 text-white" /></div>
             <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight text-center">물리치료사<br/>성향 밸런스 게임</h1>
             <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 mb-8">게임 시작하기</button>
-            <div className="relative w-full h-[250px] mb-10 mt-6">
+            <div className="relative w-full h-[50px] my-4">
               <div className="absolute left-1/2 -translate-x-1/2">
-                <AdFit key="result-ad" unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" />
+                <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
               </div>
             </div>
           </div>
@@ -87,11 +87,7 @@ export default function BalancePage() {
               <p className="text-slate-700 leading-relaxed text-center font-bold text-lg px-2">{resultData[getResult()].desc}</p>
             </div>
 
-            <div className="relative w-full h-[250px] mb-10 mt-6">
-              <div className="absolute left-1/2 -translate-x-1/2">
-                <AdFit key="result-ad" unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" />
-              </div>
-            </div>
+            <div className="flex justify-center mb-10"><AdFit unit="DAN-qhPnziozp8CBV7X7" width="300" height="250" /></div>
 
             <div className="space-y-4 mb-10">
               <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }} className="w-full py-4 bg-indigo-900 text-white rounded-2xl font-bold flex items-center justify-center gap-3 text-lg"><Share2 className="w-6 h-6" /> 링크 복사하기</button>
