@@ -5,14 +5,12 @@ import { useEffect, useState } from "react";
 export default function AdFit({ unit, width, height }) {
   const [isClient, setIsClient] = useState(false);
 
-  // 서버 사이드 에러 방지용
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   if (!isClient) return <div style={{ width: `${width}px`, height: `${height}px`, margin: '0 auto' }} />;
 
-  // iframe 안에 들어갈 카카오 광고 전용 미니 HTML 문서입니다.
   const iframeHtml = `
     <!DOCTYPE html>
     <html lang="ko">
@@ -20,7 +18,6 @@ export default function AdFit({ unit, width, height }) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
-          /* 여백을 없애고 광고를 중앙에 딱 맞춥니다 */
           body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background-color: transparent; }
         </style>
       </head>
@@ -35,18 +32,18 @@ export default function AdFit({ unit, width, height }) {
   `;
 
   return (
-    <div className="flex justify-center my-4 overflow-hidden" style={{ minHeight: `${height}px` }}>
+    // overflow-hidden을 삭제하고, 좌우 여백을 무시하기 위해 w-full을 줍니다.
+    <div className="flex justify-center my-4 w-full" style={{ minHeight: `${height}px` }}>
       <iframe
         title={`kakao-ad-${unit}`}
-        srcDoc={iframeHtml} // 만들어둔 미니 HTML을 iframe에 주입합니다.
+        srcDoc={iframeHtml}
         width={width}
         height={height}
         frameBorder="0"
         scrolling="no"
         style={{
           border: "none",
-          overflow: "hidden",
-          width: `${width}px`,
+          width: `${width}px`, // 고정폭 320px 유지
           height: `${height}px`,
           backgroundColor: "transparent"
         }}
