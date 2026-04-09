@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Share2, RefreshCcw, Activity, Heart, Zap, Award, Users } from 'lucide-react';
+import { Share2, RefreshCcw, Activity, Heart, Zap, Award, Users, Instagram } from 'lucide-react';
 import AdFit from "../../components/AdFit";
 
 export default function BalancePage() {
@@ -43,13 +43,14 @@ export default function BalancePage() {
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4 font-jua">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 min-h-[600px] flex flex-col relative">
-
         {step === 'start' && (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-sky-50 to-white">
             <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center mb-8 shadow-xl"><Activity className="w-12 h-12 text-white" /></div>
-            <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight">물리치료사<br/>성향 밸런스 게임</h1>
+            <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight text-center">물리치료사<br/>성향 밸런스 게임</h1>
             <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 mb-8">게임 시작하기</button>
-            <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
+            <div className="-mx-6 flex justify-center">
+              <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
+            </div>
           </div>
         )}
 
@@ -69,20 +70,35 @@ export default function BalancePage() {
 
         {step === 'result' && (
           <div className="flex-1 flex flex-col p-6 overflow-y-auto bg-white">
-            <div className="text-center mt-4 mb-6"><h2 className="text-4xl font-black text-slate-900 break-keep">{resultData[getResult()].title}</h2></div>
+            <div className="text-center mt-4 mb-6"><h2 className="text-4xl font-black text-slate-900 break-keep text-center">{resultData[getResult()].title}</h2></div>
             <div className={`rounded-[40px] ${resultData[getResult()].color} p-8 mb-8 flex flex-col items-center justify-center shadow-xl shadow-slate-200/50`}>
               <div className="mb-6 bg-white p-5 rounded-3xl shadow-md">{resultData[getResult()].icon}</div>
+              <span className="inline-block px-6 py-2 bg-indigo-800 rounded-full text-xs font-black text-white shadow-md mb-6 uppercase tracking-widest">{resultData[getResult()].type}</span>
+
+              {/* 되살아난 해시태그 섹션 */}
+              <div className="flex flex-wrap justify-center gap-2 mb-8 px-2">
+                {resultData[getResult()].tags.map((tag, i) => (
+                  <span key={i} className="text-indigo-700 font-bold text-sm bg-white/70 px-3 py-1 rounded-xl border border-indigo-100 shadow-sm">{tag}</span>
+                ))}
+              </div>
+
               <p className="text-slate-700 leading-relaxed text-center font-bold text-lg px-2">{resultData[getResult()].desc}</p>
             </div>
 
-            {/* ⭐ 결과창 전용 Key 추가 (강제 새로고침) */}
-            <div className="flex justify-center mb-10">
-              <AdFit key="balance-result-ad" unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" />
-            </div>
+            <div className="flex justify-center mb-10"><AdFit unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" /></div>
 
             <div className="space-y-4 mb-10">
               <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert("링크가 복사되었습니다!"); }} className="w-full py-4 bg-indigo-900 text-white rounded-2xl font-bold flex items-center justify-center gap-3 text-lg"><Share2 className="w-6 h-6" /> 링크 복사하기</button>
               <button onClick={restart} className="w-full py-4 bg-white border-2 border-slate-200 text-slate-500 rounded-2xl font-bold flex items-center justify-center gap-3"><RefreshCcw className="w-5 h-5" /> 다시 테스트하기</button>
+            </div>
+
+            {/* 되살아난 커뮤니티 배너 섹션 */}
+            <div className="bg-slate-900 rounded-[36px] p-10 text-center shadow-2xl border border-slate-800">
+              <p className="text-indigo-400 text-lg font-black mb-4 tracking-widest uppercase italic">💡 NEXT STEP</p>
+              <div className="text-slate-200 text-base mb-8 leading-relaxed font-medium">놓치면 손해인 물리치료사들의 로드맵!<br /><span className="text-white text-3xl font-black block mt-3 mb-1 tracking-tighter italic font-serif leading-none text-center">PT MAP</span></div>
+              <button onClick={() => window.open(COMMUNITY_URL, '_blank')} className="w-full py-5 bg-indigo-600 text-white rounded-[20px] font-black text-xl hover:bg-indigo-500 flex items-center justify-center gap-2">
+                <Instagram className="w-6 h-6" /> 커뮤니티 바로가기
+              </button>
             </div>
           </div>
         )}
