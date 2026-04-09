@@ -48,8 +48,10 @@ export default function BalancePage() {
             <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center mb-8 shadow-xl"><Activity className="w-12 h-12 text-white" /></div>
             <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight text-center">물리치료사<br/>성향 밸런스 게임</h1>
             <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 mb-8">게임 시작하기</button>
-            <div className="relative w-[320px] left-1/2 -translate-x-1/2 flex justify-center mb-4">
-              <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
+            <div className="relative w-full h-[50px] my-4">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
+              </div>
             </div>
           </div>
         )}

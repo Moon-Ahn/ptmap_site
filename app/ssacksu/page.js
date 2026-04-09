@@ -63,8 +63,10 @@ export default function SsacksuPage() {
             <h1 className="text-3xl font-black mb-4 text-slate-900 leading-tight text-center">물리치료사<br/>진로 성향 테스트</h1>
             <p className="text-slate-500 mb-8 text-lg font-medium italic">나의 진로 로드맵은?<br /><span className="font-bold text-indigo-800 text-sm uppercase tracking-widest leading-none text-center">NS / OS / Routine / Research / Industry / Sports</span></p>
             <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-800 text-white rounded-2xl font-bold text-xl shadow-lg active:scale-95 transition-all mb-8 text-center cursor-pointer">테스트 시작하기</button>
-            <div className="relative w-[320px] left-1/2 -translate-x-1/2 flex justify-center mb-4">
-              <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
+            <div className="relative w-full h-[50px] my-4">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
+              </div>
             </div>
           </div>
         )}
