@@ -59,6 +59,11 @@ export default function SsacksuPage() {
 
         {step === 'start' && (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-indigo-50 to-white">
+            <div className="relative w-full h-[50px] mb-6">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit unit="DAN-ngQGP38QEk1gbM2R" width="320" height="50" />
+              </div>
+            </div>
             <div className="w-24 h-24 bg-indigo-100 rounded-3xl rotate-12 flex items-center justify-center mb-8 shadow-xl shadow-indigo-100/50"><Activity className="w-12 h-12 text-indigo-700 -rotate-12" /></div>
             <h1 className="text-3xl font-black mb-4 text-slate-900 leading-tight text-center">물리치료사<br/>진로 성향 테스트</h1>
             <p className="text-slate-500 mb-8 text-lg font-medium italic">나의 진로 로드맵은?<br /><span className="font-bold text-indigo-800 text-sm uppercase tracking-widest leading-none text-center">NS / OS / Routine / Research / Industry / Sports</span></p>
@@ -80,6 +85,11 @@ export default function SsacksuPage() {
 
         {step === 'result' && (
           <div className="flex-1 flex flex-col p-6 overflow-y-auto bg-white">
+            <div className="relative w-full h-[50px] mb-6">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit unit="DAN-ngQGP38QEk1gbM2R" width="320" height="50" />
+              </div>
+            </div>
             <div className="text-center mb-8"><div className="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-xs font-black mb-3 tracking-widest uppercase text-center">PT MAP 진단결과 🔍</div><h2 className="text-3xl font-black text-slate-900 break-keep text-center">{resultData[getResult()].title}</h2></div>
             <div className={`rounded-[32px] ${resultData[getResult()].color} p-8 mb-8 flex flex-col items-center justify-center border border-white shadow-xl shadow-slate-200/50`}>
               <div className="mb-6 bg-white p-5 rounded-3xl shadow-md transform -rotate-3">{resultData[getResult()].icon}</div>

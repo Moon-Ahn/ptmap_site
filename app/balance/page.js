@@ -45,6 +45,11 @@ export default function BalancePage() {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200 min-h-[600px] flex flex-col relative">
         {step === 'start' && (
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-sky-50 to-white">
+            <div className="relative w-full h-[50px] mb-6">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit unit="DAN-ngQGP38QEk1gbM2R" width="320" height="50" />
+              </div>
+            </div>
             <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center mb-8 shadow-xl"><Activity className="w-12 h-12 text-white" /></div>
             <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight text-center">물리치료사<br/>성향 밸런스 게임</h1>
             <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 mb-8">게임 시작하기</button>
@@ -72,6 +77,11 @@ export default function BalancePage() {
 
         {step === 'result' && (
           <div className="flex-1 flex flex-col p-6 overflow-y-auto bg-white">
+            <div className="relative w-full h-[50px] mb-6">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit unit="DAN-ngQGP38QEk1gbM2R" width="320" height="50" />
+              </div>
+            </div>
             <div className="text-center mt-4 mb-6"><h2 className="text-4xl font-black text-slate-900 break-keep text-center">{resultData[getResult()].title}</h2></div>
             <div className={`rounded-[40px] ${resultData[getResult()].color} p-8 mb-8 flex flex-col items-center justify-center shadow-xl shadow-slate-200/50`}>
               <div className="mb-6 bg-white p-5 rounded-3xl shadow-md">{resultData[getResult()].icon}</div>
