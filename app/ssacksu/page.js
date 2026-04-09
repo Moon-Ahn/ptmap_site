@@ -96,8 +96,10 @@ export default function SsacksuPage() {
             </div>
 
             {/* 결과창 광고 (Iframe 대응 및 강제 로드용 key 추가) */}
-            <div className="flex justify-center mb-10">
-              <AdFit key="ssacksu-result-ad" unit="DAN-qhPnziozp8CBV7X7" width="300" height="250" />
+            <div className="relative w-full h-[250px] mb-10 mt-6">
+              <div className="absolute left-1/2 -translate-x-1/2">
+                <AdFit key="result-ad" unit="DAN-yFTIi0bFetiem8FB" width="300" height="250" />
+              </div>
             </div>
 
             <div className="space-y-4 mb-10">
