@@ -44,15 +44,41 @@ export default function BalancePage() {
     <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4 font-jua">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200 min-h-[600px] flex flex-col relative">
         {step === 'start' && (
-          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-sky-50 to-white">
+          <div className="flex-1 flex flex-col items-center justify-start p-8 text-center bg-gradient-to-b from-sky-50 to-white">
+            {/* 상단 광고 (320x50) */}
             <div className="relative w-full h-[50px] mb-6">
               <div className="absolute left-1/2 -translate-x-1/2">
                 <AdFit unit="DAN-ngQGP38QEk1gbM2R" width="320" height="50" />
               </div>
             </div>
-            <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center mb-8 shadow-xl"><Activity className="w-12 h-12 text-white" /></div>
-            <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight text-center">물리치료사<br/>성향 밸런스 게임</h1>
-            <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 mb-8">게임 시작하기</button>
+
+            {/* 로고 아이콘 */}
+            <div className="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center mb-8 shadow-xl mt-4">
+              <Activity className="w-12 h-12 text-white" />
+            </div>
+
+            {/* 메인 타이틀 */}
+            <h1 className="text-3xl font-black mb-3 text-slate-900 leading-tight text-center">
+              물리치료사<br/>성향 밸런스 게임
+            </h1>
+
+            {/* ⭐ 되살아난 설명 문구 섹션 ⭐ */}
+            <p className="text-slate-500 mb-8 font-medium">
+              나의 임상 스타일은?<br/>
+              <span className="text-indigo-700 text-sm font-bold tracking-tight uppercase">
+                PT MAP BALANCE GAME
+              </span>
+            </p>
+
+            {/* 시작 버튼 */}
+            <button
+              onClick={() => setStep('quiz')}
+              className="relative z-50 w-full py-5 bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-lg active:scale-95 mb-8"
+            >
+              게임 시작하기
+            </button>
+
+            {/* 하단 광고 (320x50) */}
             <div className="relative w-full h-[50px] my-4">
               <div className="absolute left-1/2 -translate-x-1/2">
                 <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
