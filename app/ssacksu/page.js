@@ -61,7 +61,7 @@ export default function SsacksuPage() {
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-indigo-50 to-white">
             <div className="relative w-full h-[50px] mb-6">
               <div className="absolute left-1/2 -translate-x-1/2">
-                <AdFit unit="DAN-ngQGP38QEk1gbM2R" width="320" height="50" />
+                <AdFit unit="DAN-dSRVwXHWlgD47VzW" width="320" height="50" />
               </div>
             </div>
             <div className="w-24 h-24 bg-indigo-100 rounded-3xl rotate-12 flex items-center justify-center mb-8 shadow-xl shadow-indigo-100/50"><Activity className="w-12 h-12 text-indigo-700 -rotate-12" /></div>
@@ -70,7 +70,7 @@ export default function SsacksuPage() {
             <button onClick={() => setStep('quiz')} className="relative z-50 w-full py-5 bg-indigo-800 text-white rounded-2xl font-bold text-xl shadow-lg active:scale-95 transition-all mb-8 text-center cursor-pointer">테스트 시작하기</button>
             <div className="relative w-full h-[50px] my-4">
               <div className="absolute left-1/2 -translate-x-1/2">
-                <AdFit unit="DAN-XtapIFyqCBFDOWUZ" width="320" height="50" />
+                <AdFit unit="DAN-nFTYhy0aNJA2tDnA" width="320" height="50" />
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function SsacksuPage() {
           <div className="flex-1 flex flex-col p-6 overflow-y-auto bg-white">
             <div className="relative w-full h-[50px] mb-6">
               <div className="absolute left-1/2 -translate-x-1/2">
-                <AdFit unit="DAN-ngQGP38QEk1gbM2R" width="320" height="50" />
+                <AdFit unit="DAN-dSRVwXHWlgD47VzW" width="320" height="50" />
               </div>
             </div>
             <div className="text-center mb-8"><div className="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-xs font-black mb-3 tracking-widest uppercase text-center">PT MAP 진단결과 🔍</div><h2 className="text-3xl font-black text-slate-900 break-keep text-center">{resultData[getResult()].title}</h2></div>
@@ -108,7 +108,7 @@ export default function SsacksuPage() {
             {/* 결과창 광고도 강제 중앙 정렬을 적용하여 여백에 잘리지 않게 방어합니다 */}
             <div className="relative w-full h-[250px] mb-10">
               <div className="absolute left-1/2 -translate-x-1/2">
-                <AdFit unit="DAN-qhPnziozp8CBV7X7" width="300" height="250" />
+                <AdFit unit="DAN-AZC27OECEFU86rJm" width="300" height="250" />
               </div>
             </div>
 

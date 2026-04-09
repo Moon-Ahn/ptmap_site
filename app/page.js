@@ -66,7 +66,7 @@ export default function HubPage() {
 
         {/* --- 메인 허브 전용 광고 섹션 (300x250) --- */}
         <div className="mt-12 py-4">
-          <AdFit unit="DAN-qhPnziozp8CBV7X7" width="300" height="250" />
+          <AdFit unit="DAN-AZC27OECEFU86rJm" width="300" height="250" />
         </div>
 
         {/* 커뮤니티 배너 */}
