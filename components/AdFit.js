@@ -18,7 +18,7 @@ export default function AdFit({ unit, width, height }) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
-          body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background-color: transparent; }
+          body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background-color: transparent; overflow: hidden; }
         </style>
       </head>
       <body>
@@ -32,8 +32,8 @@ export default function AdFit({ unit, width, height }) {
   `;
 
   return (
-    // overflow-hidden을 삭제하고, 좌우 여백을 무시하기 위해 w-full을 줍니다.
-    <div className="flex justify-center my-4 w-full" style={{ minHeight: `${height}px` }}>
+    // 부모 여백을 뚫고 나가기 위해 너비를 충분히 확보하고 중앙 정렬합니다.
+    <div className="flex justify-center my-4 w-full overflow-visible">
       <iframe
         title={`kakao-ad-${unit}`}
         srcDoc={iframeHtml}
@@ -43,9 +43,10 @@ export default function AdFit({ unit, width, height }) {
         scrolling="no"
         style={{
           border: "none",
-          width: `${width}px`, // 고정폭 320px 유지
+          width: `${width}px`,
           height: `${height}px`,
-          backgroundColor: "transparent"
+          backgroundColor: "transparent",
+          display: "block"
         }}
       />
     </div>
